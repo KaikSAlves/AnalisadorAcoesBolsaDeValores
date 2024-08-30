@@ -1,0 +1,3 @@
+- Filtrar Ações por meio de seus atrubutos
+- selecionar os tipos de atributos que deseja ver
+- realizar gráficos e tabelas de "melhores" acoes conforme orientado (Seja por maior preco ou maior pvp)

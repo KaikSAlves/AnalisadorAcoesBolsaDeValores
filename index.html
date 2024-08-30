@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./src/style.css">
+    <title>Stocks</title>
+</head>
+
+<body>
+    <section class="cabecalho">
+        <div class="titulo">
+            <span onclick="mudarPaginaMain()">Analisar</span>
+            <span id="texto-acoes" onclick="mudarPaginaMain()">Ações</span>
+        </div>
+        <div class="opcoes">
+            <div id="opcoes" class="gerar-tabelas">
+                <span onclick="mudarPaginaTabelas()">Tabelas</span>
+                <figure><img src="" alt=""></figure>
+            </div>
+
+            <div id="opcoes" class="gerar-graficos">
+                <span onclick="mudarPaginaGraficos()">Gráficos</span>
+                <figure><img src="" alt=""></figure>
+            </div>
+
+            <div id="opcoes" class="tendencias">
+                <span onclick="mudarPaginaTendencias()">Tendências</span>
+                <figure><img src="" alt=""></figure>
+            </div>
+        </div>
+    </section>
+    <section id="main" class="main-page">
+        <h1 class="titulo-main-page">Use nossas ferramentas para otimizar seu tempo!</h1>
+        <h3 class="sub-titulo-main-page">Gerar tabelas, gráficos e acompanhe as notícias no mesmo lugar!<br>
+            Obs: Isso não é recomendação de investimento! Trabalhamos<br>
+            com análise e estatísticas reais.</h3>
+    </section>
+    <section id="tabelas" class="tabelas-page">
+        <div class="container-receber-dados">
+
+            <div class="conteudo-tabela">
+                <span id = "text-conteudo">Conteúdo:</span>
+                <select name="colunas-tabela" id="colunas-tabela">
+                    <option value="cotacao">Cotação</option>
+                    <option value="pL">P/L</option>
+                    <option value="pVp">P/VP</option>
+                    <option value="psr">PSR</option>
+                    <option value="divYield">Div.Yield</option>
+                    <option value="pAtivo">P/Ativo</option>
+                    <option value="pCapGiro">P/Cap.Giro</option>
+                    <option value="pEbit">P/EBIT</option>
+                    <option value="pAtivo">P/Ativo</option>
+                    <option value="evEbit">EV/EBIT</option>
+                    <option value="mrgEbit">Mrg Ebit</option>
+                    <option value="mrgLiq">Mrg. Líq.</option>
+                    <option value="liqCorr">Liq Corr.</option>
+                    <option value="roe">ROE</option>
+                    <option value="liq2Meses">Liq.2meses</option>
+                    <option value="patrimLiq">Patrim.Líq</option>
+                    <option value="divBrutPatrim">Dív.Brut/Patrim.</option>
+                    <option value="crescRec5a">Cresc.Rec.5a</option>
+                    <option value="mrgEbit">Mrg Ebit</option>
+                </select>
+                <button id="botao-adicionar">Adicionar</button>
+                <button id="botao-remover">Remover</button>
+            </div>
+            
+            <div class = "filtros-tabela">
+                <div>
+                    <span id="text-filtro">Filtros: </span>
+                <select name="filtros-tabela" id="filtros-tabela">
+                    <option value="nenhum">Nenhum</option>
+                    <option value = "cotacao">Cotação</option>
+                    <option value = "divYield">Div.Yield</option>
+                    <option value = "patrimLiq">Patrim.Líq</option>
+                </select>
+                <select name="ordem-tabela" id="ordem-tabela">
+                    <option value="crescente">Ordem crescente</option>
+                    <option value="decrescente">Ordem decrescente</option>
+                </select>
+                </div>
+
+                <div class = "maior-que-menor-que">
+                    <span>Maior que</span>
+                    <input id = "maior-que" type="number">
+                    <span>Menor que</span>
+                    <input id = "menor-que" type="number">
+                </div>
+            </div>
+
+            <button id = "botao-buscar">Buscar</button>
+
+        </div>
+
+        <div class = "container-tabela">
+            <table id="tabela-de-acoes">
+                <tr id = "titulos-tabela">
+                    <td value = "papel">Papel</td>
+                    <td value = "cotacao">Cotação</td>
+                    <td value = "divYield">Div.Yield</td>
+                    <td value = "patrimLiq">Patrim.Líq</td>
+                </tr>
+            </table>
+        </div>
+
+        <table class=tabela-de-acoes>
+        </table>
+    </section>
+    <section id="graficos" class="graficos-page">
+        <h1>graficos-page</h1>
+    </section>
+    <section id="tendencias" class="tendencias-page">
+        <h1>tensx</h1>
+    </section>
+</body>
+<script src="./src/script.js"></script>
+
+</html>
