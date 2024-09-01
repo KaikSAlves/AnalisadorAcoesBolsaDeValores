@@ -102,6 +102,67 @@ body{
 
 .graficos-page{
     display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 7rem;
+    gap: 1.5rem;
+}
+
+.graficos-page input{
+    background-color: black;
+    border-style:none ;
+    border: 1px solid white;
+    width: 80px;
+    height: 25px;
+    border-radius: 100px;
+    outline-style: none;
+    padding: 0px 10px 0px 10px;
+}
+
+#btn-comparar{
+    color: white;
+    background-color: chocolate;
+    width: 100px;
+    height: 30px;
+    border-style: none;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: 500ms ease;
+}
+
+#btn-comparar:hover{
+    transform: scale(1.1);
+}
+
+#erro-input-vazio{
+    font-size: 15px;
+    color: chocolate;
+    position: inherit;
+    display: none;
+}
+
+#erro-acao-nao-encontrada{
+    font-size: 15px;
+    color: chocolate;
+    position: inherit;
+    display: none;
+}
+
+.linha1-graficos{
+    flex-direction: row;
+    display: flex;
+    gap: 40px;
+}
+
+.linha2-graficos{
+    flex-direction: row;
+    display: flex;
+    gap: 40px;
+}
+
+.container-dados-acoes{
+    height: 30px;
 }
 
 .tendencias-page{
@@ -273,3 +334,4 @@ tr, td{
     color: black;
     display: none;
 }
+

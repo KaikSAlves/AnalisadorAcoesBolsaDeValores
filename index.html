@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./src/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Stocks</title>
 </head>
 
@@ -112,12 +113,40 @@
 
     </section>
     <section id="graficos" class="graficos-page">
-        <h1>graficos-page</h1>
+        <div class="container-dados-acoes">
+            <input type="text" id="input-acao-1" placeholder="PAPEL 1" onclick="retirarMensagemDeErro()">
+            <span>X</span>
+            <input type="text" id="input-acao-2" placeholder="PAPEL 2" onclick="retirarMensagemDeErro()">
+        </div>
+
+        <span id = "erro-input-vazio">Preencha os campos corretamente</span>
+        <span id = "erro-acao-nao-encontrada">Ação não encontrada</span>
+        <button id="btn-comparar">Comparar</button>
+
+        <div class = "linha1-graficos">
+            <div class="container-graficos">
+                <canvas id="grafico-div-yield" width = "300" height = "300"></canvas>
+            </div>
+            <div class="container-graficos">
+                <canvas id="grafico-cotacao" width = "300" height = "300"></canvas>
+            </div>
+        </div>
+
+        <div class="linha2-graficos">
+            <div class="container-graficos">
+                <canvas id="grafico-patrim-liq" width = "300" height = "300"></canvas>
+            </div>
+            <div class="container-graficos">
+                <canvas id="grafico-cresc-rec" width = "300" height = "300"></canvas>
+            </div>
+        </div>
+        
     </section>
     <section id="tendencias" class="tendencias-page">
         <h1>tensx</h1>
     </section>
 </body>
-<script src="./src/script.js"></script>
-
+    <script src="./src/script.js"></script>
+    <script src="./src/tabela.js"></script>
+    <script src="./src/graficos.js"></script>
 </html>
