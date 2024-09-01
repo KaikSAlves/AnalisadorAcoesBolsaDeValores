@@ -250,3 +250,26 @@ tr, td{
 }
 
 
+.busca{
+    display: flex;
+    padding-top: 25px;
+    right: 0;
+}
+
+#buscar-acoes{
+    background-color: black;
+    border-style:none ;
+    border: 1px solid white;
+    width: 80px;
+    height: 25px;
+    border-radius: 100px;
+    outline-style: none;
+    padding: 0px 10px 0px 10px;
+}
+
+#btn-baixar-xls{
+    width: 150px;
+    background-color: white;
+    color: black;
+    display: none;
+}

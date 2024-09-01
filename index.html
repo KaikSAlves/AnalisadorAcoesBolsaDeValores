@@ -29,6 +29,10 @@
                 <span onclick="mudarPaginaTendencias()">Tendências</span>
                 <figure><img src="" alt=""></figure>
             </div>
+
+            <div class="busca">
+                <input type="text" id = "buscar-acoes" placeholder="PAPEL">
+            </div>
         </div>
     </section>
     <section id="main" class="main-page">
@@ -91,22 +95,21 @@
             </div>
 
             <button id = "botao-buscar">Buscar</button>
+            <button id = "btn-baixar-xls">Extrair para excel</button>
 
         </div>
 
-        <div class = "container-tabela">
+        <div id = "divTabela" class = "container-tabela">
             <table id="tabela-de-acoes">
                 <tr id = "titulos-tabela">
-                    <td value = "papel">Papel</td>
-                    <td value = "cotacao">Cotação</td>
-                    <td value = "divYield">Div.Yield</td>
-                    <td value = "patrimLiq">Patrim.Líq</td>
+                    <td class = "Titulo" value = "papel">Papel</td>
+                    <td class = "Titulo" value = "cotacao">Cotação</td>
+                    <td class = "Titulo" value = "divYield">Div.Yield</td>
+                    <td class = "Titulo" value = "patrimLiq">Patrim.Líq</td>
                 </tr>
             </table>
         </div>
 
-        <table class=tabela-de-acoes>
-        </table>
     </section>
     <section id="graficos" class="graficos-page">
         <h1>graficos-page</h1>

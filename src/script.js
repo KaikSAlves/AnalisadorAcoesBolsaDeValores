@@ -48,7 +48,7 @@ function adicionarTituloTabela(option) {
 
     if (verificacao) {
         arrayDeTitulos.push(option.value);
-        var codHtml = `<td value = "${option.value}">${option.textContent}</td>`;
+        var codHtml = `<td class "Titulo" value = "${option.value}">${option.textContent}</td>`;
         tr.innerHTML += codHtml;
     }
 }
@@ -96,12 +96,22 @@ window.document.getElementById("botao-remover").addEventListener("click", functi
 });
 
 window.document.getElementById("botao-buscar").addEventListener("click", function () {
+    window.document.getElementById('btn-baixar-xls').style.display = 'block';
+
     const selectFiltro = window.document.getElementById("filtros-tabela").value;
     const selectOrder = window.document.getElementById("ordem-tabela").value;
-    var verificacaoFiltros = true;
-    var maiorQueNum = window.document.getElementById("maior-que");
-    var menorQueNum = window.document.getElementById("menor-que");
+    
+    var maiorQueNum = window.document.getElementById("maior-que").value;
+    var menorQueNum = window.document.getElementById("menor-que").value;
 
+    if (maiorQueNum == "") {
+        maiorQueNum = -999999999999;
+        console.log("true")
+    }
+
+    if (menorQueNum == "") {
+        menorQueNum = 99999999999999;
+    }
     //TODO: arrumar essa bomba de ordenar por crescente ou decrescente
     limparTabela();
     fetch("stocks.json").then((Response => {
@@ -109,44 +119,62 @@ window.document.getElementById("botao-buscar").addEventListener("click", functio
 
             //ordenar com filto e crescente ou decrescente
             if (selectFiltro !== "nenhum") {
-                arrayStocks = dados.stocks;
                 if (selectOrder == "decrescente") {
-                    dados.stocks.sort((a, b) => parseFloat(a[selectFiltro]) - parseFloat(b[selectFiltro]));;
+                    dados.stocks.sort((a, b) => converterParaNumero(a[selectFiltro]) - converterParaNumero(b[selectFiltro]));;
                 } else if (selectOrder == "crescente") {
-                    dados.stocks.sort((a, b) => parseFloat(b[selectFiltro]) - parseFloat(a[selectFiltro]));;
+                    dados.stocks.sort((a, b) => converterParaNumero(b[selectFiltro]) - converterParaNumero(a[selectFiltro]));;
                 }
 
-                //visualizar se possui entrada de dados dos inputs
             }
             for (i = 0; i <= dados.stocks.length; i++) {
                 //dados.stocks.map((stock => {
 
-                linhaTabela = `<tr id = "${i}"><tr/>`
-                tabela.innerHTML += linhaTabela;
+                //filtro de numeros (maior que e menor que)    
+                if (selectFiltro !== "nenhum") {
+                    if (converterParaNumero(dados.stocks[i][selectFiltro]) > maiorQueNum && converterParaNumero(dados.stocks[i][selectFiltro]) < menorQueNum) {
+                        adicionarItem(dados);
+                    }
+                } else {
+                    adicionarItem(dados);
+                }
 
-                arrayDeTitulos.forEach(titulo => {
-
-
-                    var info = dados.stocks[i][titulo];
-                    
-                    //casos: possuir maiorQue e menorQue
-                    //      possuir menorQue mas nao MaiorQue
-                    //      possuir maiorQue e nao MenorQue
-
-                    var linha = document.getElementById(i).innerHTML += `<td>${info}<td//>`;
-                });
 
                 //condicoes de parada
                 if (i >= 100) {
-                    break;
+                    //break;
                 }
                 //}));
             }
         });
     }));
 
-
+  
 });
+
+window.document.getElementById('btn-baixar-xls').addEventListener('click', function(){
+    extrairXls();
+    window.document.getElementById('btn-baixar-xls').style.display = "none";
+})
+
+function converterParaNumero(str){
+
+    str = str.replace(/\./g, "");
+    str = str.replace(",",".");
+
+    return parseFloat(str)
+}
+
+function adicionarItem(dados) {
+    linhaTabela = `<tr id = "${i}"><tr/>`
+    tabela.innerHTML += linhaTabela;
+
+    arrayDeTitulos.forEach(titulo => {
+
+        var info = dados.stocks[i][titulo];
+        var linha = document.getElementById(i).innerHTML += `<td>${info}<td//>`;
+
+    });
+}
 
 function limparTabela() {
     const linhas = tabela.getElementsByTagName('tr');
@@ -193,5 +221,21 @@ function removerOptionsEmBranco() {
             options[i].remove();
         }
     }
+
+}
+
+function extrairXls(){
+    var divTabela = document.getElementById('divTabela');
+    
+    var dados = new Blob(['\ufeff' + divTabela.outerHTML], {type: 'application/vnd.ms-excel'});
+    var url = window.URL.createObjectURL(dados);
+    
+    var a = document.createElement('a');
+
+    a.href = url;
+
+    a.download = 'Dados acoes';
+
+    a.click();
 
 }
