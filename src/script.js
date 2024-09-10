@@ -1,4 +1,4 @@
-window.document.getElementById("graficos").style.display = "flex";
+window.document.getElementById("tabelas").style.display = "flex";
 
 function mudarPaginaTabelas() {
     window.document.getElementById("tabelas").style.display = "flex";

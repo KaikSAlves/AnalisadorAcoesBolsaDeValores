@@ -1,25 +1,24 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=New+Amsterdam&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=New+Amsterdam&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
-*{
+* {
     margin: 0;
     padding: 0;
     color: white;
 
 }
 
-body{
+body {
     background-color: black;
     flex-direction: column;
 }
 
-.cabecalho{
+.cabecalho {
     display: flex;
     flex-direction: row;
 }
 
-.titulo{
+.titulo {
     display: flex;
     flex-direction: column;
     margin-left: 1.2rem;
@@ -30,13 +29,13 @@ body{
     cursor: pointer;
 }
 
-#texto-acoes{
+#texto-acoes {
     padding-left: 4rem;
-    color:chocolate;
-    
+    color: chocolate;
+
 }
 
-.opcoes{
+.opcoes {
     width: 19rem;
     display: flex;
     flex-direction: row;
@@ -48,13 +47,13 @@ body{
     justify-content: center;
 }
 
-#opcoes{
+#opcoes {
     display: flex;
     flex-direction: row;
-    
+
 }
 
-#opcoes span{
+#opcoes span {
     padding-top: 1.8rem;
     cursor: pointer;
     transition: 500ms ease;
@@ -64,12 +63,12 @@ body{
 }
 
 
-#opcoes span:hover{
+#opcoes span:hover {
     transform: scale(1.1);
     border-bottom: 2px solid chocolate;
 }
 
-.main-page{
+.main-page {
     display: none;
     flex-direction: column;
     align-items: center;
@@ -77,30 +76,30 @@ body{
     font-family: opensans;
     font-size: 0.8rem;
     padding-top: 6rem;
-    
+
 }
 
-.titulo-main-page{
+.titulo-main-page {
     font-style: italic;
     color: chocolate;
 }
 
-.sub-titulo-main-page{
+.sub-titulo-main-page {
     font-size: 0.7rem;
     padding-top: 10px;
     text-align: center;
 }
 
-.tabelas-page{
+.tabelas-page {
     display: none;
     flex-direction: column;
     margin-top: 3rem;
     margin-left: 1.3rem;
     align-items: center;
-    
+
 }
 
-.graficos-page{
+.graficos-page {
     display: none;
     flex-direction: column;
     align-items: center;
@@ -109,9 +108,9 @@ body{
     gap: 1.5rem;
 }
 
-.graficos-page input{
+.graficos-page input {
     background-color: black;
-    border-style:none ;
+    border-style: none;
     border: 1px solid white;
     width: 80px;
     height: 25px;
@@ -120,7 +119,7 @@ body{
     padding: 0px 10px 0px 10px;
 }
 
-#btn-comparar{
+#btn-comparar {
     color: white;
     background-color: chocolate;
     width: 100px;
@@ -131,82 +130,82 @@ body{
     transition: 500ms ease;
 }
 
-#btn-comparar:hover{
+#btn-comparar:hover {
     transform: scale(1.1);
 }
 
-#erro-input-vazio{
+#erro-input-vazio {
     font-size: 15px;
     color: chocolate;
     position: inherit;
     display: none;
 }
 
-#erro-acao-nao-encontrada{
+#erro-acao-nao-encontrada {
     font-size: 15px;
     color: chocolate;
     position: inherit;
     display: none;
 }
 
-.linha1-graficos{
+.linha1-graficos {
     flex-direction: row;
     display: flex;
     gap: 40px;
 }
 
-.linha2-graficos{
+.linha2-graficos {
     flex-direction: row;
     display: flex;
     gap: 40px;
 }
 
-.container-dados-acoes{
+.container-dados-acoes {
     height: 30px;
 }
 
-.tendencias-page{
-    display: none;  
+.tendencias-page {
+    display: none;
 }
 
-select{
-    background-color:  black;
+select {
+    background-color: black;
     border: 1px solid white;
     border-radius: 100px;
     padding: 5px;
     outline-style: none;
     transition: 500ms ease;
-    
-    
+
+
 }
 
-.container-receber-dados input{
+.container-receber-dados input {
     background-color: black;
     color: white;
     border: none;
     border-bottom: 1px solid white;
     width: 2rem;
     outline-style: none;
-    
+
 }
 
-.container-receber-dados input::-webkit-inner-spin-button{
+.container-receber-dados input::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
 
-.container-receber-dados{
+.container-receber-dados {
     padding-top: 10px;
 }
 
-#text-conteudo{
+#text-conteudo {
     margin-right: 1rem;
 }
 
-#text-filtro{
+#text-filtro {
     margin-right: 2.3rem;
 }
 
-.conteudo-tabela button{
+.conteudo-tabela button {
     margin-left: 10px;
     width: 100px;
     height: 25px;
@@ -219,54 +218,55 @@ select{
 
 }
 
-.filtros-tabela{
+.filtros-tabela {
     padding-top: 10px;
     display: flex;
     flex-direction: row;
     gap: 15px;
 }
 
-.maior-que-menor-que{
-    
-   padding-top: 7px;
+.maior-que-menor-que {
+
+    padding-top: 7px;
 
 }
 
-#botao-buscar{
+#botao-buscar {
     margin-right: 10px;
 }
 
-.container-receber-dados button:hover{
+.container-receber-dados button:hover {
     transform: scale(1.1);
 }
 
-.conteudo-tabela button:hover{
-   transform: scale(1.1);
+.conteudo-tabela button:hover {
+    transform: scale(1.1);
 
 }
 
-table{
+table {
     border-collapse: collapse;
     display: flex;
     flex-direction: column;
     text-align: center;
     max-height: 300px;
-    width:150%;
+    width: 150%;
     overflow-x: hidden;
     overflow-y: auto;
 }
 
-tr{
+tr {
     display: flex;
     width: 100%;
 }
 
-td{
+td {
     display: flex;
     width: 100%;
 }
 
-tr, td{
+tr,
+td {
     color: white;
     padding: 8px;
     flex: 1;
@@ -275,12 +275,12 @@ tr, td{
 }
 
 
-#titulos-tabela td{
+#titulos-tabela td {
     background-color: chocolate;
     width: 100%;
 }
 
-.container-tabela{
+.container-tabela {
     padding-top: 4rem;
     display: flex;
     flex-direction: column;
@@ -288,18 +288,18 @@ tr, td{
     justify-content: center;
 }
 
-::-webkit-scrollbar{
+::-webkit-scrollbar {
     background-color: black;
     height: 10px;
 }
 
-::-webkit-scrollbar-thumb{
+::-webkit-scrollbar-thumb {
     background-color: black;
     border-radius: 100px;
-    
+
 }
 
-.container-receber-dados button{
+.container-receber-dados button {
     width: 100px;
     height: 25px;
     border: none;
@@ -311,15 +311,15 @@ tr, td{
 }
 
 
-.busca{
+.busca {
     display: flex;
     padding-top: 25px;
     right: 0;
 }
 
-#buscar-acoes{
+#buscar-acoes {
     background-color: black;
-    border-style:none ;
+    border-style: none;
     border: 1px solid white;
     width: 80px;
     height: 25px;
@@ -328,10 +328,20 @@ tr, td{
     padding: 0px 10px 0px 10px;
 }
 
-#btn-baixar-xls{
+#btn-baixar-xls {
     width: 150px;
     background-color: white;
     color: black;
     display: none;
 }
 
+input[type="checkbox"] {
+    margin-right: 8px;
+    -webkit-appearance: checkbox;
+    -moz-appearance: checkbox;
+    appearance: checkbox;
+}
+
+#botao-comparar-itens-tabela{
+    display: none;
+}

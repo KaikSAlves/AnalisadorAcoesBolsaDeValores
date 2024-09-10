@@ -1,5 +1,7 @@
 var arrayDeTitulos = new Array("papel", "cotacao", "divYield", "patrimLiq");
 var tabela = document.getElementById("tabela-de-acoes");
+var qntdeDeCheckbox = 0;
+var arrayPapeisComparar = [];
 
 function adicionarTituloTabela(option) {
     var tr = window.document.getElementById("titulos-tabela");
@@ -65,7 +67,12 @@ window.document.getElementById("botao-remover").addEventListener("click", functi
 });
 
 window.document.getElementById("botao-buscar").addEventListener("click", function () {
+
     window.document.getElementById('btn-baixar-xls').style.display = 'block';
+
+    document.getElementById('botao-comparar-itens-tabela').style.display = "none";
+    arrayPapeisComparar = [];
+    qntdeDeCheckbox = 0;
 
     const selectFiltro = window.document.getElementById("filtros-tabela").value;
     const selectOrder = window.document.getElementById("ordem-tabela").value;
@@ -80,7 +87,7 @@ window.document.getElementById("botao-buscar").addEventListener("click", functio
     if (menorQueNum == "") {
         menorQueNum = 99999999999999;
     }
-    //TODO: arrumar essa bomba de ordenar por crescente ou decrescente
+
     limparTabela();
     fetch("stocks.json").then((Response => {
         Response.json().then((dados) => {
@@ -115,7 +122,55 @@ window.document.getElementById("botao-buscar").addEventListener("click", functio
                 */
             }
         });
+
     }));;
+
+    setTimeout(function () {
+        var checkboxes = document.getElementsByClassName("checkbox");
+        
+
+        Array.from(checkboxes).forEach(checkbox => {
+            checkbox.checked = false;
+           
+            checkbox.addEventListener('click', function () {
+
+                if (checkbox.checked) {
+                    if (qntdeDeCheckbox >= 2) {
+                        checkbox.checked = false;
+                    } else {
+                        arrayPapeisComparar.push(pegarPapelCheckbox(checkbox));
+                        qntdeDeCheckbox += 1;
+
+                        if (qntdeDeCheckbox == 2) {
+                            //botao aparece
+                            document.getElementById('botao-comparar-itens-tabela').style.display = "block";
+                        } else {
+                            //botao some
+                            document.getElementById('botao-comparar-itens-tabela').style.display = "none";
+                        }
+                    }
+                } else {
+                    //botao some
+                    document.getElementById('botao-comparar-itens-tabela').style.display = "none";
+                    arrayPapeisComparar = arrayPapeisComparar.filter(papel => papel !== pegarPapelCheckbox(checkbox));
+                    qntdeDeCheckbox -= 1;
+                }
+
+            });
+        });
+    }, 500);
+
+});
+
+
+window.document.getElementById('botao-comparar-itens-tabela').addEventListener('click', function () {
+    window.document.getElementById("tabelas").style.display = "none";
+    window.document.getElementById("graficos").style.display = "flex";
+
+    document.getElementById('input-acao-1').value = arrayPapeisComparar[0];
+    document.getElementById('input-acao-2').value = arrayPapeisComparar[1];
+
+    document.getElementById('btn-comparar').click();
 
 });
 
@@ -126,6 +181,7 @@ window.document.getElementById('btn-baixar-xls').addEventListener('click', funct
 
 window.document.getElementById('buscar-acoes').addEventListener('keydown', function (event) {
     if (event.key == "Enter") {
+        document.getElementById('botao-comparar-itens-tabela').style.display = 'none';
         limparTabela();
         mudarPaginaTabelas();
         fetch('stocks.json').then(Response => {
@@ -140,6 +196,11 @@ window.document.getElementById('buscar-acoes').addEventListener('keydown', funct
 
     }
 });
+
+function pegarPapelCheckbox(checkbox) {
+    textoPapel = checkbox.closest('td').textContent;
+    return textoPapel;
+}
 
 function converterParaNumero(str) {
 
@@ -156,8 +217,11 @@ function adicionarItem(dados) {
     arrayDeTitulos.forEach(titulo => {
 
         var info = dados.stocks[i][titulo];
-        var linha = document.getElementById(i).innerHTML += `<td>${info}<td//>`;
-
+        if (titulo == 'papel') {
+            var linha = document.getElementById(i).innerHTML += `<td><input type = "checkbox" class = "checkbox">${info}<td/>`;
+        } else {
+            var linha = document.getElementById(i).innerHTML += `<td>${info}<td//>`;
+        }
     });
 }
 
