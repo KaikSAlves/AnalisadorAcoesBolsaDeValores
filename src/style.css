@@ -164,10 +164,6 @@ body {
     height: 30px;
 }
 
-.tendencias-page {
-    display: none;
-}
-
 select {
     background-color: black;
     border: 1px solid white;

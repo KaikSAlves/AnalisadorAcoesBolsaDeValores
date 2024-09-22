@@ -24,7 +24,7 @@ window.document.getElementById('btn-comparar').addEventListener('click', functio
     var input2 = window.document.getElementById('input-acao-2').value.toUpperCase();
     var verificacao = 0;
 
-    if(graficos == 1){
+    if (graficos == 1) {
         excluirGraficos();
     }
 
@@ -35,38 +35,40 @@ window.document.getElementById('btn-comparar').addEventListener('click', functio
         papelAcoes = [input1, input2];
         fetch('stocks.json').then(Response => {
             Response.json().then(dados => {
-            
-                
-            for(j= 0; j < 2; j++){
 
-                for (i = 0; i < dados.stocks.length; i++) {
-            
-                    if (papelAcoes[j] == (dados.stocks[i]['papel'])) {
-                        dadosDivYield.push(converterParaNumero(dados.stocks[i]['divYield']));
-                        dadosCotacao.push(converterParaNumero(dados.stocks[i]['cotacao']));
-                        dadosCrescRec.push(converterParaNumero(dados.stocks[i]['crescRec5a']));
-                        dadosPatrimLiq.push(converterParaNumero(dados.stocks[i]['patrimLiq']));
 
-                        verificacao += 1;
-                    }   
+                for (j = 0; j < 2; j++) {
+
+                    for (j = 0; j < 2; j++) {
+
+                        for (i = 0; i < dados.stocks.length; i++) {
+
+                            if (papelAcoes[j] == (dados.stocks[i]['papel'])) {
+                                dadosDivYield.push(converterParaNumero(dados.stocks[i]['divYield']));
+                                dadosCotacao.push(converterParaNumero(dados.stocks[i]['cotacao']));
+                                dadosCrescRec.push(converterParaNumero(dados.stocks[i]['crescRec5a']));
+                                dadosPatrimLiq.push(converterParaNumero(dados.stocks[i]['patrimLiq']));
+
+                                verificacao += 1;
+                            }
+                        }
+                    }
+
+                    if (verificacao => 2) {
+                        criarGraficos(dadosCotacao, dadosCrescRec, dadosDivYield, dadosPatrimLiq);
+                        dadosDivYield = [];
+                        dadosCotacao = [];
+                        dadosPatrimLiq = [];
+                        dadosCrescRec = [];
+                        graficos = 1;
+                    } else {
+                        window.document.getElementById('erro-acao-nao-encontrada').style.display = "flex"
+                    }
                 }
-            }
-
-                if (verificacao => 2) {
-                    criarGraficos(dadosCotacao, dadosCrescRec, dadosDivYield, dadosPatrimLiq);
-                    dadosDivYield = [];
-                    dadosCotacao = [];
-                    dadosPatrimLiq = [];
-                    dadosCrescRec = [];
-                    graficos = 1;
-                } else {
-                    window.document.getElementById('erro-acao-nao-encontrada').style.display = "flex"
-                }
-
             });
         });
 
-        
+
     }
 });
 
@@ -77,7 +79,7 @@ function converterParaNumero(str) {
     return parseFloat(str)
 }
 
-function excluirGraficos(){
+function excluirGraficos() {
     graficoDivYield.destroy();
     graficoCotacao.destroy();
     graficoCrescRec.destroy();
@@ -87,6 +89,13 @@ function excluirGraficos(){
 function retirarMensagemDeErro() {
     document.getElementById('erro-input-vazio').style.display = "none";
     document.getElementById('erro-acao-nao-encontrada').style.display = "none";
+}
+
+function excluirGraficos() {
+    graficoDivYield.destroy();
+    graficoCotacao.destroy();
+    graficoCrescRec.destroy();
+    graficoPatrimLiq.destroy();
 }
 
 function criarGraficos(dadosCotacao, dadosCrescRec, dadosDivYield, dadosPatrimLiq) {
